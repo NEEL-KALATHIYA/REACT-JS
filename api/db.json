@@ -1,28 +1,10 @@
 {
   "courses": [
     {
-      "id": "3b45",
-      "title": "react",
-      "fee": "35",
-      "duration": "50"
-    },
-    {
-      "id": "c255",
-      "title": "testing",
-      "fee": "34543",
-      "duration": "50"
-    },
-    {
-      "id": "1196",
-      "title": "testing",
-      "fee": "34543",
-      "duration": "50"
-    },
-    {
-      "id": "e5f9",
-      "title": "",
-      "fee": "",
-      "duration": ""
+      "id": "eb9f",
+      "title": "css",
+      "fees": "120000",
+      "duration": "56"
     }
   ]
 }

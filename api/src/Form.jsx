@@ -1,65 +1,114 @@
-import React, { useState } from "react";
-import API from "./config/api";
+import { useState } from "react";
+import { TextField, Button, Box, Typography } from "@mui/material";
+import API from "./Config/Api";
 
-const Form = ({ initialData = {} }) => {
-  console.log(initialData);
-
-  const [course, setCourse] = useState({
-    title: initialData.title ? initialData.title : "",
-    fee: initialData.fee ? initialData.fee : "",
-    duration: initialData.duration ? initialData.duration : "",
+export const Form = ({ intialData = {} }) => {
+  const [course, setcourse] = useState({
+    title: intialData.title ? intialData.title : "",
+    fees: intialData.fees ? intialData.fees : "",
+    duration: intialData.duration ? intialData.duration : "",
   });
 
-  const handleInput = (e) => {
+  const handleinuptchange = (e) => {
     const { name, value } = e.target;
-    setCourse({
-      ...course,
-      [name]: value,
-    });
+    setcourse({ ...course, [name]: value });
   };
 
-  const createCourse = async (course) => {
-    if (initialData?.id) {
-      console.log("update course", initialData.id);
-      await API.patch(`/courses/${initialData.id}`, course);
+  const createCourse = async () => {
+    if (intialData?.id) {
+      await API.patch(`/courses/${intialData.id}`, course);
     } else {
-      let res = await API.post("/courses", course);
+      await API.post("/courses", course);
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    createCourse(course);
-    setCourse({
-      title: "",
-      fee: "",
-      duration: "",
-    });
+    createCourse();
+    setcourse({ title: "", fees: "", duration: "" });
   };
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "linear-gradient(to right, #1e3c72, #2a5298)",
+        padding: 3,
+      }}
+    >
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 3,
+          width: "400px",
+          padding: 4,
+          background: "#fff",
+          borderRadius: "12px",
+          boxShadow: "0 6px 15px rgba(0, 0, 0, 0.2)",
+          border: "1px solid #e0e0e0",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            color: "#1e3c72",
+            marginBottom: 2,
+          }}
+        >
+          Course Form
+        </Typography>
+        <TextField
+          label="Course Name"
+          variant="outlined"
           name="title"
           value={course.title}
-          onChange={handleInput}
+          onChange={handleinuptchange}
+          fullWidth
         />
-        <input
+        <TextField
+          label="Course Fees"
           type="number"
-          name="fee"
-          value={course.fee}
-          onChange={handleInput}
+          variant="outlined"
+          name="fees"
+          value={course.fees}
+          onChange={handleinuptchange}
+          fullWidth
         />
-        <input
-          type="text"
+        <TextField
+          label="Course Duration"
+          type="number"
+          variant="outlined"
           name="duration"
           value={course.duration}
-          onChange={handleInput}
+          onChange={handleinuptchange}
+          fullWidth
         />
-        <input type="submit" value={"Add"} />
-      </form>
-    </div>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          sx={{
+            padding: "12px",
+            fontSize: "16px",
+            fontWeight: "bold",
+            textTransform: "none",
+            backgroundColor: "#1e3c72",
+            "&:hover": {
+              backgroundColor: "#163057",
+            },
+          }}
+        >
+          Submit
+        </Button>
+      </Box>
+    </Box>
   );
 };
-
-export default Form;

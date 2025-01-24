@@ -1,15 +1,14 @@
-import React from "react";
-
-import Form from "./Form";
-import Courses from "./Courses";
-import { Alert } from "@mui/material";
+import "./App.css";
+import { Course } from "./Course";
+import { Form } from "./Form";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Form />
-      <Courses />
-    </div>
+      <h1>Course Details</h1>
+      <Course />
+    </>
   );
 };
 

@@ -4,20 +4,19 @@ import Input from "@mui/joy/Input";
 import LinearProgress from "@mui/joy/LinearProgress";
 import Typography from "@mui/joy/Typography";
 import Key from "@mui/icons-material/Key";
+// import InputSubscription from "./InputSubscription";
 
 function Form() {
   const [value, setValue] = React.useState("");
 
-  // Regex patterns for different password strengths
   const patterns = {
     veryWeak: /^.{3,}$/,
     weak: /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/,
-    strong: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, 
+    strong: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
     veryStrong:
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/,
   };
 
-  // Function to determine password strength
   const getStrength = (password) => {
     if (patterns.veryStrong.test(password))
       return { label: "Very strong", color: "green" };
@@ -55,6 +54,9 @@ function Form() {
           },
         }}
       />
+      
+    
+
       <LinearProgress
         determinate
         size="sm"

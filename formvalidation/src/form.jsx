@@ -12,7 +12,7 @@ function Form() {
   const patterns = {
     veryWeak: /^.{3,}$/,
     weak: /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/,
-    strong: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, // Adjusted strong regex
+    strong: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/, 
     veryStrong:
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/,
   };

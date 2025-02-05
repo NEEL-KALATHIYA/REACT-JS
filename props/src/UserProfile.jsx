@@ -14,7 +14,7 @@ const UserProfile = (props) => {
         <p>
           {user.bio.length > 100 ? (
             <>
-              {user.bio.substring(0, 130)}... <span>Read more</span>
+              {user.bio.substring(0, 135)}... <span>Read more</span>
             </>
           ) : (
             user.bio

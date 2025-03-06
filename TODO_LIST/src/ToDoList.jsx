@@ -8,7 +8,6 @@ const ToDoList = () => {
   const [editIndex, setEditIndex] = useState(null);
   const [editTask, setEditTask] = useState("");
 
-  // Add new task
   const addTask = () => {
     if (newTask.trim() !== "") {
       setTasks([...tasks, { text: newTask, completed: false }]);
@@ -16,25 +15,21 @@ const ToDoList = () => {
     }
   };
 
-  // Delete task
   const deleteTask = (index) => {
     setTasks(tasks.filter((_, i) => i !== index));
   };
 
-  // Toggle task completion
   const toggleTaskCompletion = (index) => {
     const updatedTasks = [...tasks];
     updatedTasks[index].completed = !updatedTasks[index].completed;
     setTasks(updatedTasks);
   };
 
-  // Start Editing
   const startEditing = (index) => {
     setEditIndex(index);
     setEditTask(tasks[index].text);
   };
 
-  // Update Task
   const updateTask = () => {
     if (editTask.trim() !== "") {
       const updatedTasks = [...tasks];
@@ -45,7 +40,6 @@ const ToDoList = () => {
     }
   };
 
-  // Cancel Editing
   const cancelEditing = () => {
     setEditIndex(null);
     setEditTask("");
@@ -54,8 +48,6 @@ const ToDoList = () => {
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">To-Do List</h2>
-
-      {/* Input Field & Add Button */}
       <div className="input-group mb-3">
         <input
           type="text"
@@ -68,8 +60,6 @@ const ToDoList = () => {
           Add
         </button>
       </div>
-
-      {/* Task List with Animations */}
       <ul className="list-group">
         <AnimatePresence>
           {tasks.map((task, index) => (
@@ -82,7 +72,6 @@ const ToDoList = () => {
               transition={{ duration: 0.3 }}
             >
               {editIndex === index ? (
-                // Edit Mode with Animation
                 <motion.div
                   className="d-flex w-100"
                   initial={{ x: -50, opacity: 0 }}
@@ -103,7 +92,6 @@ const ToDoList = () => {
                   </button>
                 </motion.div>
               ) : (
-                // Normal Mode with Animations
                 <>
                   <motion.span
                     style={{

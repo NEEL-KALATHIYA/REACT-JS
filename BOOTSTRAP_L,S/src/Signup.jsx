@@ -1,76 +1,56 @@
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  FormLabel,
-  Heading,
-  Icon,
-  Input,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
 import React from "react";
-import { FiBluetooth, FiUserMinus, FiUserPlus } from "react-icons/fi";
-import { HiAcademicCap, HiShoppingBag, HiShoppingCart, HiUser } from "react-icons/hi";
-import { HiFaceSmile } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import "./index.css"
 
-function Signup() {
+const Signup = () => {
   return (
     <>
-    <Navbar/>
-      <Flex minHeight="100vh" align="center" justify="center" bg="gray.200">
-        <Box
-          width={{ base: "90%", md: "400px" }}
-          p={8}
-          bg="white"
-          borderRadius={10}
-        >
-          <VStack spacing={6} align="stretch">
-            <Center>
-              <Icon as={FiBluetooth} w={10} h={10} color="blue.200" />
-            </Center>
-            <Heading as="h6" size="lg" textAlign="center" color="blue.600">
-              Sign Up for ToDo
-            </Heading>
+      <Navbar />
+      <div className="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light">
+        <div className="card p-4 shadow-lg" style={{ width: "350px" }}>
+          <h2 className="text-center text-primary">Sign Up</h2>
 
-            <form>
-              <Box>
-                <FormLabel>Username</FormLabel>
-                <Input variant="filled" placeholder="Enter Username" />
-              </Box>
-              <Box>
-                <FormLabel>Email</FormLabel>
-                <Input type="text" variant="filled" placeholder="Enter Email" />
-              </Box>
-              <Box>
-                <FormLabel>Password</FormLabel>
-                <Input
-                  type="text"
-                  variant="filled"
-                  placeholder="Enter Password"
-                />
-              </Box>
-              <Center mt={6}>
-                <Button colorScheme="blue" size="md" width="full" type="submit">
-                  Sign Up
-                </Button>
-              </Center>
+          <form>
+            <div className="mb-3">
+              <label className="form-label">Username</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Username"
+              />
+            </div>
 
-              <Text fontSize="sm" color="gray.600" marginTop={2}>
-                Already have an account?{" "}
-                <Link  to="/login">
-                  Log in
-                </Link>
-              </Text>
-            </form>
-          </VStack>
-        </Box>
-      </Flex>
+            <div className="mb-3">
+              <label className="form-label">Email</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Enter Email"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Enter Password"
+              />
+            </div>
+
+            <button type="submit" className="btn btn-primary w-100">
+              Sign Up
+            </button>
+
+            <p className="text-center mt-3">
+              Already have an account? <Link to="/login">Log in</Link>
+            </p>
+          </form>
+        </div>
+      </div>
     </>
   );
-}
+};
 
 export default Signup;

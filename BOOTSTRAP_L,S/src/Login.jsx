@@ -1,79 +1,47 @@
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  FormLabel,
-  Heading,
-  Icon,
-  Input,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
 import React from "react";
-import { FiBluetooth, FiUserMinus, FiUserPlus } from "react-icons/fi";
-import {
-  HiAcademicCap,
-  HiShoppingBag,
-  HiShoppingCart,
-  HiUser,
-} from "react-icons/hi";
-import { HiFaceSmile } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import "./index.css"
 
 const Login = () => {
   return (
     <>
-      <Navbar/>
-      <Flex minHeight="100vh" align="center" justify="center" bg="gray.200">
-        <Box
-          width={{ base: "90%", md: "400px" }}
-          p={8}
-          bg="white"
-          borderRadius={10}
-        >
-          <VStack spacing={6} align="stretch">
-            <Center>
-              <Icon as={FiBluetooth} w={10} h={10} color="blue.200" />
-            </Center>
-            <Heading as="h6" size="lg" textAlign="center" color="blue.600">
-              Login Up for ToDo
-            </Heading>
+      <Navbar />
+      <div className="container mt-5">
+        <div className="d-flex justify-content-center align-items-center vh-100">
+          <div className="card p-4 shadow-lg" style={{ width: "350px" }}>
+            <h2 className="text-center text-primary">Log in</h2>
 
             <form>
-              <Box>
-                <FormLabel>Username</FormLabel>
-                <Input variant="filled" placeholder="Enter Username" />
-              </Box>
-              <Box>
-                <FormLabel>Email</FormLabel>
-                <Input type="text" variant="filled" placeholder="Enter Email" />
-              </Box>
-              <Box>
-                <FormLabel>Password</FormLabel>
-                <Input
-                  type="text"
-                  variant="filled"
+              <div className="mb-3">
+                <label className="form-label">Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Enter Email"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
                   placeholder="Enter Password"
                 />
-              </Box>
-              <Center mt={6}>
-                <Button colorScheme="blue" size="md" width="full" type="submit">
-                  Sign Up
-                </Button>
-              </Center>
+              </div>
 
-              <Text fontSize="sm" color="gray.600" marginTop={2}>
-                Already have an account?{" "}
-                <Link color="teal.500" to="/signup">
-                  Sign up
-                </Link>
-              </Text>
+              <button type="submit" className="btn btn-primary w-100">
+                Log In
+              </button>
+
+              <p className="text-center mt-3">
+                Don't have an account? <Link to="/signup">Sign Up</Link>
+              </p>
             </form>
-          </VStack>
-        </Box>
-      </Flex>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

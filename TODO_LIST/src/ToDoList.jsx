@@ -9,10 +9,9 @@ const ToDoList = () => {
   const [editTask, setEditTask] = useState("");
 
   const addTask = () => {
-    if (newTask.trim() !== "") {
-      setTasks([...tasks, { text: newTask, completed: false }]);
-      setNewTask("");
-    }
+    if (newTask.trim() === "") return;
+    setTasks([...tasks, { text: newTask, completed: false }]);
+    setNewTask("");
   };
 
   const deleteTask = (index) => {
@@ -20,9 +19,7 @@ const ToDoList = () => {
   };
 
   const toggleTaskCompletion = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index].completed = !updatedTasks[index].completed;
-    setTasks(updatedTasks);
+    setTasks(tasks.map((task, i) => (i === index ? { ...task, completed: !task.completed } : task)));
   };
 
   const startEditing = (index) => {
@@ -31,18 +28,11 @@ const ToDoList = () => {
   };
 
   const updateTask = () => {
-    if (editTask.trim() !== "") {
-      const updatedTasks = [...tasks];
-      updatedTasks[editIndex].text = editTask;
-      setTasks(updatedTasks);
+    if (editIndex !== null && editTask.trim() !== "") {
+      setTasks(tasks.map((task, i) => (i === editIndex ? { ...task, text: editTask } : task)));
       setEditIndex(null);
       setEditTask("");
     }
-  };
-
-  const cancelEditing = () => {
-    setEditIndex(null);
-    setEditTask("");
   };
 
   return (
@@ -87,7 +77,7 @@ const ToDoList = () => {
                   <button className="btn btn-success btn-sm me-2" onClick={updateTask}>
                     Save
                   </button>
-                  <button className="btn btn-secondary btn-sm" onClick={cancelEditing}>
+                  <button className="btn btn-secondary btn-sm" onClick={() => setEditIndex(null)}>
                     Cancel
                   </button>
                 </motion.div>

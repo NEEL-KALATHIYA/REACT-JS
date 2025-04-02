@@ -1,11 +1,11 @@
-import Counter from "./Counter"; // Ensure the import is correct
+import React from 'react'
 
-function App() {
+const App = () => {
   return (
     <div>
-      <Counter />
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,13 +1,18 @@
-// import React from 'react'
-import Counter from './Counter'
+import React from "react";
+import TodoList from "./components/TodoList";
+import "./App.css";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1>Counter</h1>
-      <Counter/>
+    <div className="App">
+      <header className="App-header">
+        <h1>Firebase Todo App</h1>
+      </header>
+      <main>
+        <TodoList />
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
